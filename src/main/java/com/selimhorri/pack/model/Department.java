@@ -1,14 +1,26 @@
 package com.selimhorri.pack.model;
 
+import java.util.Set;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Document
 public class Department {
 	
 	@Id
-	private Integer id;
+	private String id;
+	
+	@Field
 	private String departmentName;
+	
+	@JsonIgnore
+	@Field(targetType = FieldType.ARRAY)
+	private Set<Employee> employees;
 	
 	public Department() {
 		
@@ -18,7 +30,7 @@ public class Department {
 		this.departmentName = departmentName;
 	}
 
-	public Department(Integer id, String departmentName) {
+	public Department(String id, String departmentName) {
 		this.id = id;
 		this.departmentName = departmentName;
 	}
@@ -59,11 +71,11 @@ public class Department {
 		return true;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

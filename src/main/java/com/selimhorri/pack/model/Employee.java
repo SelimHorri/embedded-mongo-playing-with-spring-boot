@@ -2,14 +2,21 @@ package com.selimhorri.pack.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document
 public class Employee {
 	
 	@Id
-	private Integer id;
+	private String id;
+	
+	@Field
 	private String fname;
+	
+	@Field
 	private String lname;
+	
+	@Field
 	private Department department;
 	
 	public Employee() {
@@ -22,7 +29,7 @@ public class Employee {
 		this.department = department;
 	}
 
-	public Employee(Integer id, String fname, String lname, Department department) {
+	public Employee(String id, String fname, String lname, Department department) {
 		this.id = id;
 		this.fname = fname;
 		this.lname = lname;
@@ -77,11 +84,11 @@ public class Employee {
 		return true;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
