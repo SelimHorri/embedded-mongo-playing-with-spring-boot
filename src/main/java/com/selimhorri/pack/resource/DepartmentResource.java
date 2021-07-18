@@ -16,15 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.selimhorri.pack.model.Department;
 import com.selimhorri.pack.repo.DepartmentRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/app/api/departments")
+@RequiredArgsConstructor
 public class DepartmentResource {
 	
-	private DepartmentRepository departmentRepository;
-	
-	public DepartmentResource(final DepartmentRepository departmentRepository) {
-		this.departmentRepository = departmentRepository;
-	}
+	private final DepartmentRepository departmentRepository;
 	
 	@GetMapping
 	public ResponseEntity<List<Department>> findAll() {

@@ -16,15 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.selimhorri.pack.model.Employee;
 import com.selimhorri.pack.repo.EmployeeRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/app/api/employees")
+@RequiredArgsConstructor
 public class EmployeeResource {
 	
-	private EmployeeRepository employeeRepository;
-	
-	public EmployeeResource(final EmployeeRepository employeeRepository) {
-		this.employeeRepository = employeeRepository;
-	}
+	private final EmployeeRepository employeeRepository;
 	
 	@GetMapping
 	public ResponseEntity<List<Employee>> findAll() {
