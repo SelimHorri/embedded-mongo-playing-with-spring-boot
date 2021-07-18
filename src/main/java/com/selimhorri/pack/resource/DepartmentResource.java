@@ -13,41 +13,41 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.selimhorri.pack.model.Employee;
-import com.selimhorri.pack.repo.EmployeeRepository;
+import com.selimhorri.pack.model.Department;
+import com.selimhorri.pack.repo.DepartmentRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/app/api/employees")
+@RequestMapping("/app/api/departments")
 @RequiredArgsConstructor
-public class EmployeeResource {
+public class DepartmentResource {
 	
-	private final EmployeeRepository employeeRepository;
+	private final DepartmentRepository departmentRepository;
 	
 	@GetMapping
-	public ResponseEntity<List<Employee>> findAll() {
-		return new ResponseEntity<>(this.employeeRepository.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<Department>> findAll() {
+		return new ResponseEntity<>(this.departmentRepository.findAll(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Employee> findById(@PathVariable("id") final String id) {
-		return new ResponseEntity<>(this.employeeRepository.findById(id).orElseThrow(NoSuchElementException::new), HttpStatus.OK);
+	public ResponseEntity<Department> findById(@PathVariable("id") final String id) {
+		return new ResponseEntity<>(this.departmentRepository.findById(id).orElseThrow(NoSuchElementException::new), HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Employee> save(final Employee employee) {
-		return new ResponseEntity<>(this.employeeRepository.save(employee), HttpStatus.OK);
+	public ResponseEntity<Department> save(final Department department) {
+		return new ResponseEntity<>(this.departmentRepository.save(department), HttpStatus.OK);
 	}
 	
 	@PutMapping
-	public ResponseEntity<Employee> update(final Employee employee) {
-		return new ResponseEntity<>(this.employeeRepository.save(employee), HttpStatus.OK);
+	public ResponseEntity<Department> update(final Department department) {
+		return new ResponseEntity<>(this.departmentRepository.save(department), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Boolean> deleteById(@PathVariable("id") final String id) {
-		this.employeeRepository.deleteById(id);
+		this.departmentRepository.deleteById(id);
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
 	
